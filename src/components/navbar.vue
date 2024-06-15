@@ -36,15 +36,15 @@ import { RouterLink, RouterView } from 'vue-router'
                 List
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Destination</a></li>
-                <li><a class="dropdown-item" href="#">Event</a></li>
-                <li><a class="dropdown-item" href="#">Post</a></li>
-                <li><a class="dropdown-item" href="#">Gallery</a></li>
+                <li><RouterLink class="dropdown-item" :to="{name: 'destinations'}">Destinations</RouterLink></li>
+                <li><RouterLink class="dropdown-item" :to="{name: 'events'}">Events</RouterLink></li>
+                <li><RouterLink class="dropdown-item" :to="{name: 'posts'}">Posts</RouterLink></li>
+                <li><RouterLink class="dropdown-item" :to="{name: 'galleries'}">Galleries</RouterLink></li>
               </ul>
             </li>
           </ul>
           <div class="me-auto"></div>
-          <RouterLink :to="{ name: 'login' }" class="btn btn-light rounded-3">Masuk</RouterLink>
+          <RouterLink :to="{ name: 'login' }" class="btn btn-light rounded-3">Login</RouterLink>
         </div>
       </div>
     </nav>
