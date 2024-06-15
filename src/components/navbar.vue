@@ -8,7 +8,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-5">
       <div class="container-lg">
-        <a class="navbar-brand" href="#">Carousel</a>
+        <a class="navbar-brand" href="#">WS</a>
         <button
           class="navbar-toggler"
           type="button"

@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <h1>Ini halaman single destinations</h1>
+        <h1>Ini halaman single destinationsw</h1>
     </div>
 </template>
 <script>

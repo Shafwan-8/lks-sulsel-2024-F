@@ -5,6 +5,7 @@ import DestinationsView from '../views/content/guest/destination/index.vue'
 import EventView from '../views/content/guest/event/index.vue'
 import PostView from '../views/content/guest/post/index.vue'
 import GalleryView from '../views/content/guest/gallery/index.vue'
+import AdminView from '../views/content/admin/dashboard.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: '/galleries',
       name: 'galleries',
       component: GalleryView
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: AdminView
     },
   ]
 })
