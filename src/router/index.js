@@ -40,6 +40,8 @@ const router = createRouter({
       name: 'galleries',
       component: GalleryView
     },
+    
+    // admin
     {
       path: '/admin',
       name: 'admin',
