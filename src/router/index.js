@@ -6,10 +6,9 @@ import EventView from '../views/content/guest/event/index.vue'
 import PostView from '../views/content/guest/post/index.vue'
 import GalleryView from '../views/content/guest/gallery/index.vue'
 import AdminView from '../views/content/admin/dashboard.vue'
+import Cookies from 'js-cookie';
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
+const routes = [
     {
       path: '/',
       name: 'home',
@@ -45,9 +44,27 @@ const router = createRouter({
     {
       path: '/admin',
       name: 'admin',
-      component: AdminView
+      component: AdminView,
+      meta: { requiresAuth: true }
     },
   ]
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes,
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const token = Cookies.get('token');
+    if (!token) {
+      next({ name: 'login' });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
 
 export default router

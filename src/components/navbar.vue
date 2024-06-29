@@ -1,7 +1,42 @@
+<!-- @format -->
+
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue';
+import Cookies from 'js-cookie';
+import Api from '../api'
 
+const router = useRouter();
+const isLoggedIn = ref(false);
 
+const checkLoginStatus = () => {
+    isLoggedIn.value = !!Cookies.get('token');
+};
+
+const logout = async () => {
+    try {
+        // Get the token from cookies
+        const token = Cookies.get('token');
+
+        // Send a request to the backend to delete the token
+        await Api.post('/logout', {}, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+    } catch (error) {
+        console.error('Failed to logout from backend:', error);
+    }
+
+    // Remove the token from cookies
+    Cookies.remove('token');
+    isLoggedIn.value = false;
+    router.push({ name: 'login' });
+};
+
+onMounted(() => {
+    checkLoginStatus();
+});
 </script>
 
 <template lang="">
@@ -36,15 +71,42 @@ import { RouterLink, RouterView } from 'vue-router'
                 List
               </a>
               <ul class="dropdown-menu">
-                <li><RouterLink class="dropdown-item" :to="{name: 'destinations'}">Destinations</RouterLink></li>
-                <li><RouterLink class="dropdown-item" :to="{name: 'events'}">Events</RouterLink></li>
-                <li><RouterLink class="dropdown-item" :to="{name: 'posts'}">Posts</RouterLink></li>
-                <li><RouterLink class="dropdown-item" :to="{name: 'galleries'}">Galleries</RouterLink></li>
+                <li>
+                  <RouterLink
+                    class="dropdown-item"
+                    :to="{ name: 'destinations' }"
+                    >Destinations</RouterLink
+                  >
+                </li>
+                <li>
+                  <RouterLink class="dropdown-item" :to="{ name: 'events' }"
+                    >Events</RouterLink
+                  >
+                </li>
+                <li>
+                  <RouterLink class="dropdown-item" :to="{ name: 'posts' }"
+                    >Posts</RouterLink
+                  >
+                </li>
+                <li>
+                  <RouterLink class="dropdown-item" :to="{ name: 'galleries' }"
+                    >Galleries</RouterLink
+                  >
+                </li>
               </ul>
             </li>
           </ul>
           <div class="me-auto"></div>
-          <RouterLink :to="{ name: 'login' }" class="btn btn-light rounded-3">Login</RouterLink>
+          <template v-if="isLoggedIn">
+            <button @click="logout" class="btn btn-light rounded-3">
+              Logout
+            </button>
+          </template>
+          <template v-else>
+            <RouterLink :to="{ name: 'login' }" class="btn btn-light rounded-3"
+              >Login</RouterLink
+            >
+          </template>
         </div>
       </div>
     </nav>

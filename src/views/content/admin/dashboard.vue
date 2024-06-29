@@ -22,7 +22,7 @@
     />
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">Sign out</a>
+        <button class="nav-link" @click="logout">Logout</button>
       </li>
     </ul>
   </nav>
@@ -118,7 +118,36 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import Cookies from 'js-cookie'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import Api from '../../../api'
+
+const isLoggedIn = ref(false);
+const router = useRouter();
+
+const logout = async () => {
+    try {
+        // Get the token from cookies
+        const token = Cookies.get('token');
+        
+        // Send a request to the backend to delete the token
+        await Api.post('/logout', {}, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+    } catch (error) {
+        console.error('Failed to logout from backend:', error);
+    }
+    
+    // Remove the token from cookies
+    Cookies.remove('token');
+    isLoggedIn.value = false;
+    router.push({ name: 'login' });
+};
+</script>
 
 <style scoped>
 .bd-placeholder-img {
