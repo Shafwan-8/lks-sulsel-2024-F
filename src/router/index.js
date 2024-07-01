@@ -6,6 +6,10 @@ import EventView from '../views/content/guest/event/index.vue'
 import PostView from '../views/content/guest/post/index.vue'
 import GalleryView from '../views/content/guest/gallery/index.vue'
 import AdminView from '../views/content/admin/dashboard.vue'
+import AdminDestinationView from '../views/content/admin/destination/index.vue'
+import AdminEventView from '../views/content/admin/event/index.vue'
+import AdminPostView from '../views/content/admin/post/index.vue'
+import AdminGalleryView from '../views/content/admin/gallery/index.vue'
 import Cookies from 'js-cookie';
 
 const routes = [
@@ -45,6 +49,30 @@ const routes = [
       path: '/admin',
       name: 'admin',
       component: AdminView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/destination',
+      name: 'admin-destination',
+      component: AdminDestinationView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/event',
+      name: 'admin-event',
+      component: AdminEventView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/post',
+      name: 'admin-post',
+      component: AdminPostView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/gallery',
+      name: 'admin-gallery',
+      component: AdminGalleryView,
       meta: { requiresAuth: true }
     },
   ]

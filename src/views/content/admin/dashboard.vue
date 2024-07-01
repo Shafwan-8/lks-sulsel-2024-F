@@ -29,6 +29,8 @@
 
   <div class="container-fluid">
     <div class="row">
+
+      <!-- Sidebar -->
       <nav
         id="sidebarMenu"
         class="col-md-3 col-lg-2 d-md-block bg-light collapse sidebar position-relative"
@@ -42,24 +44,26 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file"></span>
+              <RouterLink :to="{name: 'admin-destination'}" class="nav-link">
                 Destinations
-              </a>
+              </RouterLink>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                Events
-              </a>
+              <RouterLink :to="{name: 'admin-event'}" class="nav-link">
+                Event
+              </RouterLink>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="users"></span>
-                Posts
-              </a>
+              <RouterLink :to="{name: 'admin-post'}" class="nav-link">
+                Post
+              </RouterLink>
             </li>
             <li class="nav-item">
+              <RouterLink :to="{name: 'admin-gallery'}" class="nav-link">
+                Gallery
+              </RouterLink>
+            </li>
+            <li class="nav-item border-bottom">
               <a
                 href="#submenu2"
                 data-bs-toggle="collapse"
@@ -73,17 +77,11 @@
                 data-bs-parent="#menu"
               >
                 <li class="w-100">
-                  <a href="#" class="nav-link">
-                    <span class="d-none d-sm-inline">Events</span></a
-                  >
+                  <RouterLink :to="{name: 'admin-event'}" class="nav-link">
+                    Events
+                  </RouterLink>
                 </li>
               </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="layers"></span>
-                Galleries
-              </a>
             </li>
           </ul>
 
@@ -105,14 +103,14 @@
           </ul>
         </div>
       </nav>
+      <!-- EndSidebar -->
 
       <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-        <div
-          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-        >
-          <h2 class="h2">Dashboard</h2>
-        </div>
+        <!-- Content -->
+        <HeaderDashboard title="Dashboard" pretitle="DASHBOARD" />
 
+
+        <!-- End Content -->
       </main>
     </div>
   </div>
@@ -121,8 +119,9 @@
 <script setup>
 import Cookies from 'js-cookie'
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, RouterLink } from 'vue-router'
 import Api from '../../../api'
+import HeaderDashboard from '@/components/admin/headerDashboard.vue'
 
 const isLoggedIn = ref(false);
 const router = useRouter();
@@ -147,6 +146,10 @@ const logout = async () => {
     isLoggedIn.value = false;
     router.push({ name: 'login' });
 };
+
+const alertse = () => {
+  alert('New event')
+}
 </script>
 
 <style scoped>
