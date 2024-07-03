@@ -52,25 +52,25 @@ const routes = [
       meta: { requiresAuth: true }
     },
     {
-      path: '/admin/destination',
+      path: '/admin/destinations',
       name: 'admin-destination',
       component: AdminDestinationView,
       meta: { requiresAuth: true }
     },
     {
-      path: '/admin/event',
+      path: '/admin/events',
       name: 'admin-event',
       component: AdminEventView,
       meta: { requiresAuth: true }
     },
     {
-      path: '/admin/post',
+      path: '/admin/posts',
       name: 'admin-post',
       component: AdminPostView,
       meta: { requiresAuth: true }
     },
     {
-      path: '/admin/gallery',
+      path: '/admin/galleries',
       name: 'admin-gallery',
       component: AdminGalleryView,
       meta: { requiresAuth: true }

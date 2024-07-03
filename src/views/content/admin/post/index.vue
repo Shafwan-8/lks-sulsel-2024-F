@@ -1,7 +1,12 @@
+<!-- @format -->
+
 <template>
-    <h1>page post</h1>
+  <AdminLayout>
+    <HeaderDashboard title="Posts" pretitle="POSTS" />
+  </AdminLayout>
 </template>
 
 <script setup>
-
+import AdminLayout from "@/layouts/admin/MainLayout.vue";
+import HeaderDashboard from "@/components/admin/headerDashboard.vue";
 </script>
