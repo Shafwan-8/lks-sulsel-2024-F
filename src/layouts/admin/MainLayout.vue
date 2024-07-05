@@ -60,9 +60,16 @@
               </RouterLink>
             </li>
             <li class="nav-item border-bottom">
-              <a href="#submenu2" data-bs-toggle="collapse" class="nav-link">
-                Registrations...</a
-              >
+              <div class="row">
+                <div class="col">
+                  <a href="#submenu2" data-bs-toggle="collapse" class="nav-link me-auto">
+                    Registrations
+                  </a>
+                </div>
+                <div class="col-2 d-flex justify-content-end align-items-center mx-2">
+                  <div class="dropdown-link"></div>
+                </div>
+              </div>
               <ul
                 class="collapse nav flex-column ms-2"
                 id="submenu2"
@@ -100,6 +107,7 @@
       <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <!-- Content -->
         <slot></slot>
+
         <!-- End Content -->
       </main>
     </div>
@@ -256,5 +264,15 @@ const getLinkClass = (routeName) => {
 .form-control-dark:focus {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.dropdown-link::after {
+  content: "";
+  width: 12px;
+  aspect-ratio: 1/1;
+  display: inline-block;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  transform: rotate(45deg);
 }
 </style>

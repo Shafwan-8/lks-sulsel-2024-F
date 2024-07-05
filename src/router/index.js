@@ -7,6 +7,9 @@ import PostView from '../views/content/guest/post/index.vue'
 import GalleryView from '../views/content/guest/gallery/index.vue'
 import AdminView from '../views/content/admin/dashboard.vue'
 import AdminDestinationView from '../views/content/admin/destination/index.vue'
+import AdminDestinationCreateView from '../views/content/admin/destination/create.vue'
+import AdminDestinationShowView from '../views/content/admin/destination/show.vue'
+import AdminDestinationEditView from '../views/content/admin/destination/edit.vue'
 import AdminEventView from '../views/content/admin/event/index.vue'
 import AdminPostView from '../views/content/admin/post/index.vue'
 import AdminGalleryView from '../views/content/admin/gallery/index.vue'
@@ -55,6 +58,24 @@ const routes = [
       path: '/admin/destinations',
       name: 'admin-destination',
       component: AdminDestinationView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/destinations/:id',
+      name: 'admin-destination-show',
+      component: AdminDestinationShowView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/destinations/create',
+      name: 'admin-destination-create',
+      component: AdminDestinationCreateView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/destinations/edit/:id',
+      name: 'admin-destination-edit',
+      component: AdminDestinationEditView,
       meta: { requiresAuth: true }
     },
     {

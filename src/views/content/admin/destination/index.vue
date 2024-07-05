@@ -4,7 +4,7 @@
   <AdminLayout>
     
     <HeaderDashboard title="Destinations" pretitle="DESTINATIONS">
-      <button type="button" class="btn btn-outline-secondary">+ Add Destination</button>
+      <button type="button" class="btn btn-outline-secondary" @click="$router.push({name: 'admin-destination-create'})">+ Add Destination</button>
     </HeaderDashboard>
 
     <div class="col-lg-12" v-if="dataDestinations.length === 0">
@@ -28,8 +28,8 @@
             </p>
           </div>
           <div class="card-footer d-flex justify-content-end">
-            <button class="btn btn-primary btn-sm">View</button>
-            <button class="btn btn-danger btn-sm ms-2">Delete</button>
+            <RouterLink :to="{name: 'admin-destination-show', params: {id: data.id}}" class="btn btn-primary btn-sm">View</RouterLink>
+            <button class="btn btn-danger btn-sm ms-2" @click="destroy(data.id)">Delete</button>
           </div>
         </div>
       </div>
@@ -54,6 +54,29 @@ const fetchDestinasi = async () => {
     .catch(error => {
         console.log(error);
     })
+}
+
+const debug = (id) => {
+  confirm("ID: " + id);
+}
+
+const destroy = async (id) => {
+
+  let confirmm = confirm('Are you sure you want to delete this destination?');
+
+  if (confirmm) {
+    
+    await Api.delete(`/admin/destination/${id}`)
+    .then(() => {
+      fetchDestinasi();
+    })
+    .catch(error => {
+      console.log(error);
+    })
+
+  }
+
+
 }
 
 onMounted(() => {
