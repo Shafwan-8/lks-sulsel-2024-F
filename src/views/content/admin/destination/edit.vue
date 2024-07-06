@@ -1,6 +1,6 @@
 <template>
   <AdminLayout>
-    <HeaderDashboard title="Destinations Create" pretitle="DESTINATIONS">
+    <HeaderDashboard title="Destinations Edit" pretitle="DESTINATIONS">
       <RouterLink :to="{name: 'admin-destination'}" class="btn btn-outline-secondary">Back</RouterLink>
     </HeaderDashboard>
 

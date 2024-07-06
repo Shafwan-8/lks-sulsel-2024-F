@@ -82,7 +82,7 @@ onMounted(() => {
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="../../../../assets/img/1.jpg" alt="" />
+          <!-- <img src="../../../../assets/img/1.jpg" alt="" /> -->
           <div class="grad"></div>
 
           <div class="container">
@@ -97,7 +97,7 @@ onMounted(() => {
           </div>
         </div>
         <div class="carousel-item">
-          <img src="../../../../assets/img/2.jpg" alt="" />
+          <!-- <img src="../../../../assets/img/2.jpg" alt="" /> -->
           <div class="grad"></div>
 
           <div class="container">
@@ -112,7 +112,7 @@ onMounted(() => {
           </div>
         </div>
         <div class="carousel-item">
-          <img src="../../../../assets/img/3.jpg" alt="" />
+          <!-- <img src="../../../../assets/img/3.jpg" alt="" /> -->
           <div class="grad"></div>
 
           <div class="container">
