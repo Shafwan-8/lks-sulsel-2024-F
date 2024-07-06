@@ -15,7 +15,13 @@ import AdminEventCreateView from '../views/content/admin/event/create.vue'
 import AdminEventShowView from '../views/content/admin/event/show.vue'
 import AdminEventEditView from '../views/content/admin/event/edit.vue'
 import AdminPostView from '../views/content/admin/post/index.vue'
+import AdminPostCreateView from '../views/content/admin/post/create.vue'
+import AdminPostEditView from '../views/content/admin/post/edit.vue'
+import AdminPostShowView from '../views/content/admin/post/show.vue'
 import AdminGalleryView from '../views/content/admin/gallery/index.vue'
+import AdminGalleryCreateView from '../views/content/admin/gallery/create.vue'
+import AdminGalleryEditView from '../views/content/admin/gallery/edit.vue'
+import AdminGalleryShowView from '../views/content/admin/gallery/show.vue'
 import Cookies from 'js-cookie';
 
 const routes = [
@@ -112,9 +118,45 @@ const routes = [
       meta: { requiresAuth: true }
     },
     {
+      path: '/admin/posts/:id',
+      name: 'admin-post-show',
+      component: AdminPostShowView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/posts/create',
+      name: 'admin-post-create',
+      component: AdminPostCreateView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/posts/edit/:id',
+      name: 'admin-post-edit',
+      component: AdminPostEditView,
+      meta: { requiresAuth: true }
+    },
+    {
       path: '/admin/galleries',
       name: 'admin-gallery',
       component: AdminGalleryView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/galleries/:id',
+      name: 'admin-gallery-show',
+      component: AdminGalleryShowView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/galleries/create',
+      name: 'admin-gallery-create',
+      component: AdminGalleryCreateView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/galleries/edit/:id',
+      name: 'admin-gallery-edit',
+      component: AdminGalleryEditView,
       meta: { requiresAuth: true }
     },
   ]
