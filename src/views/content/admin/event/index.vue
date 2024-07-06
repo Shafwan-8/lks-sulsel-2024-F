@@ -3,10 +3,17 @@
 <template>
   <AdminLayout>
     <HeaderDashboard title="Events" pretitle="EVENTS">
-      <button type="button" class="btn btn-outline-secondary">
+      <RouterLink :to="{name: 'admin-event-create'}" class="btn btn-outline-secondary">
         + Add Event
-      </button>
+      </RouterLink>
     </HeaderDashboard>
+
+    <div class="col-lg-12" v-if="deleteStatus">
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Success Deleted Data!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
 
     <div class="col-lg-12" v-if="dataEvents.length === 0">
       <div class="card col-12">
@@ -33,7 +40,7 @@
               >By: {{ data.user }}</span
             >
             <router-link :to="{name: 'admin-event-show', params: {id: data.id}}" class="btn btn-primary btn-sm ms-auto">View</router-link>
-            <button class="btn btn-danger btn-sm ms-2">Delete</button>
+            <button @click="destroy(data.id)" class="btn btn-danger btn-sm ms-2">Delete</button>
           </div>
         </div>
       </div>
@@ -50,12 +57,15 @@
 import AdminLayout from "@/layouts/admin/MainLayout.vue";
 import HeaderDashboard from "@/components/admin/headerDashboard.vue";
 import { ref, onMounted } from "vue";
+import { RouterLink } from "vue-router";
 import Cookie from "js-cookie";
 import Api from "@/api";
 
 const token = Cookie.get("token");
 const dataEvents = ref([]);
 const errorMessage = ref('');
+
+let deleteStatus = false;
 
 const fetchEvents = async () => {
   try {
@@ -72,6 +82,24 @@ const fetchEvents = async () => {
       : error.message; // Store error message
   }
 };
+
+const destroy = async (id) => {
+
+  let confirmm = confirm('Are you sure you want to delete this event?')
+
+  if (confirmm)
+  {
+    await Api.delete(`/admin/event/${id}`)
+    .then(() => {
+      fetchEvents();
+      deleteStatus = true;
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+
+  }
+}
 
 onMounted(() => {
   fetchEvents();

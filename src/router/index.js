@@ -11,7 +11,9 @@ import AdminDestinationCreateView from '../views/content/admin/destination/creat
 import AdminDestinationShowView from '../views/content/admin/destination/show.vue'
 import AdminDestinationEditView from '../views/content/admin/destination/edit.vue'
 import AdminEventView from '../views/content/admin/event/index.vue'
+import AdminEventCreateView from '../views/content/admin/event/create.vue'
 import AdminEventShowView from '../views/content/admin/event/show.vue'
+import AdminEventEditView from '../views/content/admin/event/edit.vue'
 import AdminPostView from '../views/content/admin/post/index.vue'
 import AdminGalleryView from '../views/content/admin/gallery/index.vue'
 import Cookies from 'js-cookie';
@@ -94,13 +96,13 @@ const routes = [
     {
       path: '/admin/events/create',
       name: 'admin-event-create',
-      component: AdminEventView,
+      component: AdminEventCreateView,
       meta: { requiresAuth: true }
     },
     {
       path: '/admin/events/edit/:id',
       name: 'admin-event-edit',
-      component: AdminEventView,
+      component: AdminEventEditView,
       meta: { requiresAuth: true }
     },
     {
