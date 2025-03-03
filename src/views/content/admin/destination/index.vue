@@ -1,4 +1,3 @@
-<!-- @format -->
 
 <template>
   <AdminLayout>
@@ -28,7 +27,7 @@
             </p>
           </div>
           <div class="card-footer d-flex justify-content-end">
-            <RouterLink :to="{name: 'admin-destination-show', params: {id: data.id}}" class="btn btn-primary btn-sm">View</RouterLink>
+            <RouterLink :to="{name: 'admin-destination-show', params: {id: data.id}}" class="btn btn-primary btn-sm" @click="console.log('View')">View</RouterLink>
             <button class="btn btn-danger btn-sm ms-2" @click="destroy(data.id)">Delete</button>
           </div>
         </div>
@@ -47,7 +46,7 @@ import Api from '@/api';
 const dataDestinations = ref([]);
 
 const fetchDestinasi = async () => {
-    await Api.get('/destinasi')
+    await Api.get('/destination')
     .then(response => {
         dataDestinations.value = response.data.data;
     })

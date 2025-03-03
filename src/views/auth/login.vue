@@ -38,6 +38,7 @@ const login = async () => {
             email: email.value, 
             password: password.value 
         });
+        
         if (response.data.status) {
             Cookies.set('token', response.data.token, { expires: 7 });
             router.push({ name: 'admin' });
@@ -46,7 +47,7 @@ const login = async () => {
         }
     } catch (error) {
         console.error(error);
-        alert('An error occurred');
+        alert('An error occurred'.error);
     }
 };
 </script>

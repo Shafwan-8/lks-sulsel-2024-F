@@ -37,7 +37,7 @@ const route = useRoute()
 
 const fetchData = async () => {
 
-    await Api.get(`/admin/destination/${route.params.id}`)
+    await Api.get(`/destination/show/${route.params.id}`)
         .then(response => {
             dataDestinasi.value = response.data.data
             console.log(response)

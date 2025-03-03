@@ -28,7 +28,6 @@
             v-model="description"
             rows="10"
           >
-          {{ description }}
         </textarea>
           <div v-if="errors.description" class="alert alert-danger mt-2">
             <span>{{ errors.description[0] }}</span>
